@@ -1,0 +1,35 @@
+<odoo>
+    <data>
+        <!--  -->
+        <record id="object0" model="test.test">
+          <field name="test_name">Test 0</field>
+          <field name="test_purpose">0 test</field>
+          <field name="tester_id">0</field>
+        </record>
+        <!--  -->
+        <record id="object1" model="test.test">
+          <field name="test_name">Test 1</field>
+          <field name="test_purpose">1 test</field>
+          <field name="tester_id">1</field>
+        </record>
+        <!--  -->
+        <record id="object2" model="test.test">
+          <field name="test_name">Test 2</field>
+          <field name="test_purpose">2 test</field>
+          <field name="tester_id">2</field>
+        </record>
+        <!--  -->
+        <record id="object3" model="test.test">
+          <field name="test_name">Test 3</field>
+          <field name="test_purpose">3 test</field>
+          <field name="tester_id">3</field>
+        </record>
+        <!--  -->
+        <record id="object4" model="test.test">
+          <field name="test_name">Test 4</field>
+          <field name="test_purpose">4 test</field>
+          <field name="tester_id">4</field>
+        </record>
+        <!--  -->
+    </data>
+</odoo>

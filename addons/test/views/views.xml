@@ -1,0 +1,88 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+    
+    <record model="ir.ui.view" id="test.list">
+      <field name="name">test.form</field>
+      <field name="model">test.test</field>
+      <field name="arch" type="xml">
+        <form string="Test form">
+          <sheet>
+            <group>
+              <field name="test_name"/>
+              <field name="test_purpose"/>
+              <field name="tester_id"/>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="test.test_session_form_view">
+      <field name="name">Session.form</field>
+      <field name="model">test.test_session</field>
+      <field name="arch" type="xml">
+        <form string="Session form">
+          <sheet>
+            <group>
+              <field name="test_id"/>
+              <field name="active"/>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="session_list_action">
+      <field name="name">Session</field>
+      <field name="res_model">test.test_session</field>
+      <field name="view_type">form</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- actions opening views on models -->
+    
+    <record model="ir.actions.act_window" id="test.action_window">
+      <field name="name">Test window</field>
+      <field name="res_model">test.test</field>
+      <field name="view_type">form</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+    
+
+    <!-- server action to the one above -->
+    
+    <record model="ir.actions.server" id="test.action_server">
+      <field name="name">test server</field>
+      <field name="model_id" ref="model_test_test"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": self._name,
+        }
+      </field>
+    </record>
+    
+
+    <!-- Top menu item -->
+    
+    <menuitem name="Test" id="test.menu_root"/>
+    
+    <!-- menu categories -->
+    
+    <menuitem name="Tests" id="test.menu_1" parent="test.menu_root" sequence="10" action="test.action_window"/>
+    <menuitem name="Tests session" id="test.menu_2" parent="test.menu_root"/>
+
+    <menuitem id="partner_menu" name="Partners" parent="test.menu_root" action="partner_list_action"/>
+    
+    <!-- actions -->
+    
+    <menuitem name="List" id="test.menu_1_list" parent="test.menu_1"
+              action="test.action_window"/>
+    <menuitem name="Server to list" id="test" parent="test.menu_2"
+              action="test.action_server"/>
+    
+  </data>
+</odoo>
